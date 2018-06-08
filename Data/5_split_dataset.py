@@ -93,5 +93,6 @@ def divide_midis(name_csv_name):
         path_file.write(old_midi_dir_path + '/' + name + '\n')
     path_file.close()
 
+
 if __name__ == '__main__':
     divide_midis('similar.csv')

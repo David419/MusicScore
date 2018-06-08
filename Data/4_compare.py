@@ -53,10 +53,6 @@ def needle(s1, s2):
         score_left = score[i][j - 1]
         score_up = score[i - 1][j]
 
-        # print('score_current: ', score_current)
-        # print('score_diag: ', score_diag)
-        # print('score_left: ', score_left)
-        # print('score_up: ', score_up)
         a1 = a2 = ''
         if score_current == score_diag + mch(s1[i - 1], s2[j - 1]):
             # print('diag')
@@ -221,13 +217,6 @@ def find_similar_midi(cmp_list, midi_name_dict):
 
 
 if __name__ == '__main__':
-    # path = ['./test_midi/m1.mid', './test_midi/m2.mid', './test_midi/m3.mid', './test_midi/m4.mid', './test_midi/m5.mid',
-    #         './test_midi/y1.mid', './test_midi/y2.mid', './test_midi/y3.mid', './test_midi/y4.mid', './test_midi/y5.mid',
-    #         './test_midi/c1.mid', './test_midi/c2.mid', './test_midi/c3.mid', './test_midi/c4.mid', './test_midi/c5.mid',
-    #         './test_midi/c6.mid']
-    #
-    # print compare_midi(path)
-    # read_csv('similar.csv')
 
     cmp_combine, name_dict = read_csv('similar.csv')
     s_c, s_c_n = find_similar_midi(cmp_combine, name_dict)

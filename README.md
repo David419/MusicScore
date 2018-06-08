@@ -1,7 +1,8 @@
-# Code for Data selecting & processing
+# Code for “Data”
 
-*********************************
-### Run Order:
+> Data selecting & processing
+
+### Code Running Order:
 
 "1_filter.py"
 
@@ -19,7 +20,8 @@
 
 "7_generate_dataset_ON.py"
 
-*********************************
+
+
 ### Introduction:
 
 **1_filter**: preliminarily filter original MIDIs
@@ -42,13 +44,31 @@
 
 **find_seq.c/find_seq.so**: a function for MIDI processing.
 
-*********************************
+
+
 ### Notice: 
 
 1. We do this research step by step, so we do not consider all necessary rules for selecting MIDIs at first, which leads to two separate steps for selecting MIDIs. This needs to be improved in the future. 
 2. There are three data representations for our model training and each model has its own data representation. They are key-map dataset , duration-map and key-map dataset, ON-map and key-map dataset. The key-map dataset can be extracted from duration-map and key-map dataset.
-3. There are several hyperparameters need to be modified in the first 7 Python file like the original MIDI document path.
+3. Several hyperparameters need to be modified in the first 7 Python file like the original MIDI document path.
 
 
 
-*********************************
+
+
+
+# Code for "trian"
+
+> Model construction & training
+
+### key
+
+key.py only uses key-map data for training.
+
+### duration_and_key
+
+duration_and_key.py uses duration-map and key-map for training.
+
+### ON_and_key
+
+ON_and_key.py uses ON-map and key-map for training.

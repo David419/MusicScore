@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d382891a-6a4b-4986-bc28-c43c0eccd49d" name="Default" comment="" />
+    <list default="true" id="d382891a-6a4b-4986-bc28-c43c0eccd49d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/4_compare.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/4_compare.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/5_split_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/5_split_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/README 2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Data/README 2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/read_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/ON_and_key/ON_and_key.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/ON_and_key/ON_and_key.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/duration_and_key/duration_and_key.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/duration_and_key/duration_and_key.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/key/key.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/key/key.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,94 +20,89 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="process_func.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/process_func.py">
+      <file leaf-file-name="4_compare.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data/4_compare.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#40#51#0" expanded="true" />
-                <element signature="e#311#1077#0" />
-                <element signature="e#15186#16286#0" />
-                <element signature="e#16329#22100#0" />
-                <element signature="e#22158#27844#0" />
-                <element signature="e#28062#29884#0" />
-              </folding>
+            <state relative-caret-position="2266">
+              <caret line="218" column="26" selection-start-line="218" selection-start-column="26" selection-end-line="218" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="5_split_dataset.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/5_split_dataset.py">
+        <entry file="file://$PROJECT_DIR$/Data/5_split_dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+            <state relative-caret-position="2002">
+              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="7_generate_dataset_ON.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data/7_generate_dataset_ON.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3804" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="find_seq.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data/find_seq.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="duration_and_key.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train/duration_and_key/duration_and_key.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="523">
+              <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="key.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train/key/key.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
               <folding>
-                <element signature="e#40#50#0" expanded="true" />
+                <element signature="e#15#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="7_generate_dataset_ON.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/7_generate_dataset_ON.py">
+      <file leaf-file-name="ON_and_key.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/train/ON_and_key/ON_and_key.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+            <state relative-caret-position="286">
+              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+              <folding>
+                <element signature="e#15#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="process_func.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data/process_func.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="6_filter_new_rule.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/6_filter_new_rule.py">
+        <entry file="file://$PROJECT_DIR$/Data/6_filter_new_rule.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3_rough_cmp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/3_rough_cmp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-              <folding>
-                <element signature="e#41#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2_mix.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/2_mix.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="10" column="43" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="1_filter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/1_filter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="4_compare.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/4_compare.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+            <state relative-caret-position="418">
+              <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="7_generate_dataset_dur.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Rule/Data/7_generate_dataset_dur.py">
+        <entry file="file://$PROJECT_DIR$/Data/7_generate_dataset_dur.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -116,6 +120,9 @@
       <find>is_lasting</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -130,6 +137,11 @@
         <option value="$PROJECT_DIR$/New_Rule/Data/4_compare.py" />
         <option value="$PROJECT_DIR$/New_Rule/Data/5_split_dataset.py" />
         <option value="$PROJECT_DIR$/New_Rule/Data/7_generate_dataset_ON.py" />
+        <option value="$PROJECT_DIR$/Data/4_compare.py" />
+        <option value="$PROJECT_DIR$/Data/5_split_dataset.py" />
+        <option value="$PROJECT_DIR$/train/ON_and_key/ON_and_key.py" />
+        <option value="$PROJECT_DIR$/train/key/key.py" />
+        <option value="$PROJECT_DIR$/train/duration_and_key/duration_and_key.py" />
       </list>
     </option>
   </component>
@@ -143,32 +155,50 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Github Code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Code" type="462c0819:PsiDirectoryNode" />
+              <item name="MusicScore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicScore" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Code" type="462c0819:PsiDirectoryNode" />
-              <item name="New_Rule" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Code" type="462c0819:PsiDirectoryNode" />
-              <item name="New_Rule" type="462c0819:PsiDirectoryNode" />
+              <item name="MusicScore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicScore" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MusicScore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicScore" type="462c0819:PsiDirectoryNode" />
+              <item name="train" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MusicScore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicScore" type="462c0819:PsiDirectoryNode" />
+              <item name="train" type="462c0819:PsiDirectoryNode" />
+              <item name="duration_and_key" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MusicScore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicScore" type="462c0819:PsiDirectoryNode" />
+              <item name="train" type="462c0819:PsiDirectoryNode" />
+              <item name="key" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MusicScore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicScore" type="462c0819:PsiDirectoryNode" />
+              <item name="train" type="462c0819:PsiDirectoryNode" />
+              <item name="ON_and_key" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -204,7 +234,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
@@ -223,47 +253,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/process_func.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#40#51#0" expanded="true" />
-            <element signature="e#311#1077#0" />
-            <element signature="e#15186#16286#0" />
-            <element signature="e#16329#22100#0" />
-            <element signature="e#22158#27844#0" />
-            <element signature="e#28062#29884#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/5_split_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#40#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/process_func.py" />
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/5_split_dataset.py" />
     <entry file="file://$PROJECT_DIR$/New_Rule/Data/filter_new_rule.py" />
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/process_func.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="e#40#51#0" expanded="true" />
-            <element signature="e#311#1077#0" />
-            <element signature="e#15186#16286#0" />
-            <element signature="e#16329#22100#0" />
-            <element signature="e#22158#27844#0" />
-            <element signature="e#28062#29884#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/process_func.py" />
     <entry file="file://$PROJECT_DIR$/New_Rule/Data/gener_data_last_new.py" />
     <entry file="file://$PROJECT_DIR$/New_Rule/Data/generate_dataset.py" />
     <entry file="file://$PROJECT_DIR$/New_Rule/Data/gener_data_last_new.py" />
@@ -271,76 +264,93 @@
     <entry file="file://$PROJECT_DIR$/New_Rule/Data/filter_new_rule.py" />
     <entry file="file://$PROJECT_DIR$/New_Rule/Data/5_filter_new_rule.py" />
     <entry file="file://$PROJECT_DIR$/New_Rule/Data/6_generate_dataset_dur.py" />
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/process_func.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#40#51#0" expanded="true" />
-            <element signature="e#311#1077#0" />
-            <element signature="e#15186#16286#0" />
-            <element signature="e#16329#22100#0" />
-            <element signature="e#22158#27844#0" />
-            <element signature="e#28062#29884#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/1_filter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/2_mix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="10" column="43" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/3_rough_cmp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding>
-            <element signature="e#41#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/4_compare.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/5_split_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
-          <folding>
-            <element signature="e#40#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/6_filter_new_rule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/7_generate_dataset_dur.py">
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/process_func.py" />
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/1_filter.py" />
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/2_mix.py" />
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/3_rough_cmp.py" />
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/4_compare.py" />
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/5_split_dataset.py" />
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/6_filter_new_rule.py" />
+    <entry file="file://$PROJECT_DIR$/New_Rule/Data/7_generate_dataset_ON.py" />
+    <entry file="file://$PROJECT_DIR$/Data/1_filter.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/New_Rule/Data/7_generate_dataset_ON.py">
+    <entry file="file://$PROJECT_DIR$/Data/2_mix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+        <state relative-caret-position="-518" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/3_rough_cmp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-784" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/6_filter_new_rule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/7_generate_dataset_dur.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/4_compare.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2266">
+          <caret line="218" column="26" selection-start-line="218" selection-start-column="26" selection-end-line="218" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/5_split_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2002">
+          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/7_generate_dataset_ON.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3804" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/process_func.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/read_test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/find_seq.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/duration_and_key/duration_and_key.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/key/key.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+          <folding>
+            <element signature="e#15#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/ON_and_key/ON_and_key.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding>
+            <element signature="e#15#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

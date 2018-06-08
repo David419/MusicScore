@@ -10,9 +10,12 @@ config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 sess = tf.Session(config=config)
 
+# to place your own dataset path
 RNN_train_dataset = '/home/todd/New_Rule/Data/dataset/new_lasting_train.tfrecords'
 RNN_validation_dataset = '/home/todd/New_Rule/Data/dataset/new_lasting_validation.tfrecords'
 RNN_test_dataset = '/home/todd/New_Rule/Data/dataset/new_lasting_test.tfrecords'
+
+# midi_num is the number of midi split chunks
 train_midi_num = 36452
 val_midi_num = 6295
 test_midi_num = 6476
@@ -25,31 +28,30 @@ threshold_h = 125
 threshold_l = 3
 round_num = 0.5
 
-
 decay = 0.8
-length = timestep_size = rnn_midi_len         # 句子长度
-width = input_size = embedding_size = rnn_event_len      # 字向量长度
+length = timestep_size = rnn_midi_len
+width = input_size = embedding_size = rnn_event_len
 class_num = 10
-hidden_size = 256    # 隐含层节点数
-layer_num = 2        # bi-lstm 层数
-save_epoch = 10  # 每10个epoch 保存一次模型
+layer_num = 2  # bi-lstm layer num
+save_epoch = 10  # every 10 epochs save a model
 
 # optimize hyper paratmeters
 tr_batch_size = 64
 init_lr = 0.01
 lr_change_rate = 10
 lr_change_epoch = [0, 25, 500, 600, 700]
-max_grad_norm = 1.0  # 最大梯度（超过此值的梯度将被裁剪）
+hidden_size = 256
+max_grad_norm = 1.0  # max gradient(excess part will be clipped)
 max_max_epoch = 800
 drop_keep_rate = 0.5
 
 lr = tf.placeholder(tf.float32, [], name='learning_rate')
 keep_prob = tf.placeholder(tf.float32, [], name='keep_prob')  # dropout rate
-batch_size = tf.placeholder(tf.int32, [], name='batch_size')  # 注意类型必须为 tf.int32
+batch_size = tf.placeholder(tf.int32, [], name='batch_size')  # the type has to be tf.int32
 
 
 tensorboard_save_path = 'logs'
-model_save_path = tensorboard_save_path + '/ckpt/bi-lstm.ckpt'  # 模型保存位置
+model_save_path = tensorboard_save_path + '/ckpt/bi-lstm.ckpt'  # model saving path
 
 
 # get dataset
@@ -86,7 +88,6 @@ def read_and_decode(tfrecord_file, midi_num):
             [events_out_single, label_out_single, keys_mask_out_single] = sess.run([
                 events_out, label_out, keys_mask_out
             ])
-
             # reshape
             events_out_single = events_out_single.reshape([rnn_midi_len, -1])
             label_out_single = label_out_single.reshape([rnn_midi_len, -1])
@@ -100,6 +101,7 @@ def read_and_decode(tfrecord_file, midi_num):
         keys_mask_out_array = np.array(keys_mask_out_list)
     return events_out_array, label_out_array, keys_mask_out_array
 
+
 event_val, y_val, mask_val = read_and_decode(RNN_validation_dataset, val_midi_num)
 event_test, y_test, mask_test = read_and_decode(RNN_test_dataset, test_midi_num)
 event_train, y_train, mask_train = read_and_decode(RNN_train_dataset, train_midi_num)
@@ -109,16 +111,6 @@ X_test = event_test
 print 'test:', np.shape(X_test)
 X_train = event_train
 print 'train:', np.shape(X_train)
-
-
-def set_threshold(inputs, masks, min_value=0, max_value=128):
-    ones_matrix = np.ones([i for i in inputs.shape])
-    max_matrix = ones_matrix * max_value
-    min_matrix = ones_matrix * min_value
-    m1 = np.greater_equal(inputs, min_matrix)
-    m2 = np.less_equal(inputs, max_matrix)
-    m = m1 * m2
-    return m * masks
 
 
 def weight_variable(shape):
@@ -143,17 +135,13 @@ def bi_lstm(X_inputs):
     # X_inputs.shape = [batchsize, timestep_size]  ->  inputs.shape = [batchsize, timestep_size, embedding_size]
     inputs = X_inputs
 
-    # ** 1.构建前向后向多层 LSTM
     cell_fw = rnn.MultiRNNCell([lstm_cell() for _ in range(layer_num)], state_is_tuple=True)
     cell_bw = rnn.MultiRNNCell([lstm_cell() for _ in range(layer_num)], state_is_tuple=True)
 
-    # ** 2.初始状态
     initial_state_fw = cell_fw.zero_state(batch_size, tf.float32)
     initial_state_bw = cell_bw.zero_state(batch_size, tf.float32)
 
-    # ** 3. bi-lstm 计算（展开）
     with tf.variable_scope('bidirectional_rnn'):
-        # *** 下面，两个网络是分别计算 output 和 state
         # Forward direction
         outputs_fw = list()
         state_fw = initial_state_fw
@@ -174,14 +162,12 @@ def bi_lstm(X_inputs):
                     tf.get_variable_scope().reuse_variables()
                 (output_bw, state_bw) = cell_bw(inputs[:, timestep, :], state_bw)
                 outputs_bw.append(output_bw)
-        # *** 然后把 output_bw 在 timestep 维度进行翻转
         # outputs_bw.shape = [timestep_size, batch_size, hidden_size]
         outputs_bw = tf.reverse(outputs_bw, [0])
-        # 把两个outputs 拼成 [timestep_size, batch_size, hidden_size*2]
+        # outputs -> [timestep_size, batch_size, hidden_size*2]
         output = tf.concat([outputs_fw, outputs_bw], 2)
         output = tf.transpose(output, perm=[1, 0, 2])
         output = tf.reshape(output, [-1, hidden_size * 2])
-    # ***********************************************************
     return output  # [-1, hidden_size*2]
 
 
@@ -225,10 +211,9 @@ with tf.variable_scope('Cost'):
 
 with tf.variable_scope('Optimizer'):
     # ***** 优化求解 *******
-    tvars = tf.trainable_variables()  # 获取模型的所有参数
-    grads, _ = tf.clip_by_global_norm(tf.gradients(cost, tvars), max_grad_norm)  # 获取损失函数对于每个参数的梯度
-    optimizer = tf.train.AdamOptimizer(learning_rate=lr)   # 优化器
-    # 梯度下降计算
+    tvars = tf.trainable_variables()
+    grads, _ = tf.clip_by_global_norm(tf.gradients(cost, tvars), max_grad_norm)
+    optimizer = tf.train.AdamOptimizer(learning_rate=lr)
     train_op = optimizer.apply_gradients(zip(grads, tvars), global_step=tf.contrib.framework.get_or_create_global_step())
 print 'Finished creating the bi-lstm model.'
 
@@ -242,7 +227,6 @@ def test_epoch(data_x, data_y, data_mask, is_val=False, _batch_size=10):
     else:
         data_size = test_midi_num
     batch_num = 0
-    # start_time = time.time()
     _costs = 0.0
     _accs = 0.0
 
@@ -270,11 +254,9 @@ sess.run(tf.global_variables_initializer())
 summary_writer = tf.summary.FileWriter(tensorboard_save_path, sess.graph)  # put this command after sess.run(var_init)
 
 
-saver = tf.train.Saver(max_to_keep=2)  # 最多保存的模型数量
+saver = tf.train.Saver(max_to_keep=2)  # max saved model quantity
 for epoch in xrange(max_max_epoch):
     sys.stdout.flush()
-    # if epoch > max_epoch:
-    #     _lr = _lr * ((decay) ** (epoch - max_epoch))
     _lr = init_lr
     if epoch > lr_change_epoch[1]:
         _lr = init_lr / lr_change_rate
@@ -291,7 +273,7 @@ for epoch in xrange(max_max_epoch):
     _accs = 0.0
     show_accs = 0.0
     show_costs = 0.0
-    tr_batch_num = 0  # 每个 epoch 中包含的 batch 数
+    tr_batch_num = 0  # the batch number in a epoch
 
     for step in range(0, train_midi_num, tr_batch_size):
         if step + tr_batch_size >= train_midi_num:
@@ -302,7 +284,6 @@ for epoch in xrange(max_max_epoch):
         y = y.reshape([tr_batch_size, length, width])
         mask = mask_train[step:step + tr_batch_size]
         mask = np.float32(mask.reshape([tr_batch_size, length, width]))
-        # mask = set_threshold(x, mask, threshold_l, threshold_h)
         feed_dict = {X_inputs: x, y_inputs: y, mask_inputs: mask, batch_size: tr_batch_size, lr: _lr, keep_prob: drop_keep_rate}
         _acc, _cost, _ = sess.run(fetches, feed_dict)  # the cost is the mean cost of one batch
         _accs += _acc
@@ -325,7 +306,7 @@ for epoch in xrange(max_max_epoch):
     summary_writer.add_summary(summary1, epoch + 1)
     summary_writer.flush()
 
-    if (epoch + 1) % save_epoch == 0:  # 每 save_epoch 个 epoch 保存一次模型
+    if (epoch + 1) % save_epoch == 0:  # every save_epoch, save the model
         save_path = saver.save(sess, model_save_path, global_step=(epoch+1))
         print 'the save path is ', save_path
     print '\ttraining, acc=%g, cost=%g;  valid acc= %g, cost=%g' % (mean_acc, mean_cost, valid_acc, valid_cost)
