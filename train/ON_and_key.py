@@ -19,31 +19,31 @@ RNN_test_dataset = '/home/todd/New_Rule/Data/dataset/new_lasting_test.tfrecords'
 train_midi_num = 36452
 val_midi_num = 6295
 test_midi_num = 6476
+
+# fixed parameters
 rnn_event_len = 10
-lasting_padded_len = 10
 overlap_len = 32
 rnn_midi_len = 256
-
-threshold_h = 125
-threshold_l = 3
+lasting_padded_len = 10
 round_num = 0.5
-
-decay = 0.8
 length = timestep_size = rnn_midi_len
 width = input_size = embedding_size = rnn_event_len
 class_num = 10
 layer_num = 2  # bi-lstm layer num
-save_epoch = 10  # every 10 epochs save a model
+save_epoch = 1  # every 10 epochs save a model
+best_val_acc = 0
 
-# optimize hyper paratmeters
+# optimize hyper parameters
+use_l2_regularization = True
+l2_lambda = 0.00001
 tr_batch_size = 64
 init_lr = 0.01
 lr_change_rate = 10
-lr_change_epoch = [0, 25, 500, 600, 700]
-hidden_size = 256
+lr_change_epoch = [0, 25, 300, 400, 500]
+hidden_size = 512
 max_grad_norm = 1.0  # max gradient(excess part will be clipped)
-max_max_epoch = 800
-drop_keep_rate = 0.5
+max_max_epoch = 600
+drop_keep_rate = 1.0
 
 lr = tf.placeholder(tf.float32, [], name='learning_rate')
 keep_prob = tf.placeholder(tf.float32, [], name='keep_prob')  # dropout rate
@@ -116,7 +116,7 @@ print 'train:', np.shape(X_train)
 def weight_variable(shape):
     """Create a weight variable with appropriate initialization."""
     initial = tf.truncated_normal(shape, stddev=0.1)
-    return tf.Variable(initial)
+    return tf.Variable(initial, name='weight_variable')
 
 
 def bias_variable(shape):
@@ -203,6 +203,22 @@ with tf.variable_scope('Cost'):
         loss = tf.divide(tf.reduce_sum(losses),  # loss from mask. reduce_sum before element-wise mul with mask !!
                          tf.reduce_sum(masks),
                          name="seq_loss_with_mask")
+        if use_l2_regularization:
+            tv = tf.trainable_variables()
+            tv_new = list()
+            for var in tv:
+                if "kernel" in var.name:
+                    tv_new.append(var)
+                elif "weight" in var.name:
+                    tv_new.append(var)
+                else:
+                    continue
+            print "l2: Variables name"
+            for var in tv_new:
+                print var.name
+            l2_cost = l2_lambda * tf.reduce_sum([tf.nn.l2_loss(v) for v in tv_new])
+            loss = loss + l2_cost
+
         return loss
 
     # Cost for Training
@@ -256,6 +272,7 @@ summary_writer = tf.summary.FileWriter(tensorboard_save_path, sess.graph)  # put
 
 saver = tf.train.Saver(max_to_keep=2)  # max saved model quantity
 for epoch in xrange(max_max_epoch):
+    best_val_acc_epoch = 0
     sys.stdout.flush()
     _lr = init_lr
     if epoch > lr_change_epoch[1]:
@@ -296,25 +313,30 @@ for epoch in xrange(max_max_epoch):
     mean_cost = _costs / tr_batch_num
     valid_acc, valid_cost = test_epoch(X_val, y_val, mask_val, is_val=True)  # valid
 
+    if valid_acc > best_val_acc:
+        best_val_acc = valid_acc
+        save_path = saver.save(sess, model_save_path, global_step=(epoch + 1))
+        best_val_acc_epoch = epoch
+        print 'the save path is ', save_path
     summary1 = tf.Summary(value=[
         tf.Summary.Value(tag="train_loss", simple_value=mean_cost),
         tf.Summary.Value(tag="train_acc", simple_value=mean_acc),
         tf.Summary.Value(tag="learning_rate", simple_value=_lr),
         tf.Summary.Value(tag="validate_loss", simple_value=valid_cost),
         tf.Summary.Value(tag="validate_acc", simple_value=valid_acc),
+        tf.Summary.Value(tag="best_val_acc_epoch", simple_value=best_val_acc_epoch),
     ])
     summary_writer.add_summary(summary1, epoch + 1)
     summary_writer.flush()
 
-    if (epoch + 1) % save_epoch == 0:  # every save_epoch, save the model
-        save_path = saver.save(sess, model_save_path, global_step=(epoch+1))
-        print 'the save path is ', save_path
+    # if (epoch + 1) % save_epoch == 0:  # every save_epoch, save the model
+    #     save_path = saver.save(sess, model_save_path, global_step=(epoch+1))
+    #     print 'the save path is ', save_path
     print '\ttraining, acc=%g, cost=%g;  valid acc= %g, cost=%g' % (mean_acc, mean_cost, valid_acc, valid_cost)
-    print 'Epoch training %d, speed=%g s/epoch' % (train_midi_num, time.time()-start_time)
+    print 'Epoch training %d, speed=%g s/epoch' % (train_midi_num, time.time() - start_time)
 # testing
-print '**TEST RESULT:'
-test_acc, test_cost = test_epoch(X_test, y_test, mask_test)
-print '**Test %d, acc=%g, cost=%g' % (test_midi_num, test_acc, test_cost)
+# print '**TEST RESULT:'
+# test_acc, test_cost = test_epoch(X_test, y_test, mask_test, dur_test)
+# print '**Test %d, acc=%g, cost=%g' % (test_midi_num, test_acc, test_cost)
 summary_writer.close()
 sess.close()
-
